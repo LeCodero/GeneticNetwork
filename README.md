@@ -9,7 +9,6 @@ genetic-deep-learning/
 ├── genetic_algorithm/
 │ ├── init.py
 │ ├── ga_engine.py
-│ ├── fitness.py
 │ ├── selection.py
 │ ├── crossover.py
 │ ├── population.py
@@ -23,7 +22,6 @@ genetic-deep-learning/
 
 - `__init__.py`: Initializes the genetic algorithm package.
 - `ga_engine.py`: Contains the `GeneticAlgorithmEngine` class which is the core of the genetic algorithm operations.
-- `fitness.py`: Defines the `evaluate_fitness` function to assess the fitness of models.
 - `selection.py`: Implements various selection methods like roulette, SUS, and elitism.
 - `crossover.py`: Provides different crossover strategies including classic averaging, SWA, weighted averaging, and random choice.
 - `population.py`: Manages the population of models, including initialization and reproduction.
@@ -42,9 +40,6 @@ genetic-deep-learning/
   - Functions include initialization, training, and model evolution management.
   - The `train` method iteratively evaluates and evolves the population of models.
   - Genealogy tracking is implemented for analyzing model lineage.
-
-- `fitness.py`:
-  - `evaluate_fitness` function is used to calculate the fitness of each model based on its performance on training and test data.
 
 - `selection.py`:
   - Implements various selection algorithms to choose models for reproduction.

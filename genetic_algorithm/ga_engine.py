@@ -1,4 +1,3 @@
-from .fitness import evaluate_fitness
 from .population import initialize_population, reproduce
 from .crossover import *
 from tqdm import tqdm
@@ -35,7 +34,7 @@ class GeneticAlgorithmEngine:
     def train(self, train_loader, test_loader):
         found_better_model = False
         for model in tqdm(self.population, desc=f"Training generation {self.current_generation + 1}"):
-            model.fitness, model.accuracy = evaluate_fitness(model, train_loader, test_loader, round(self.epochs))
+            model.cross_validate(train_loader, test_loader, round(self.epochs))
             if model.fitness < self.best_fitness:
                 self.best_fitness = model.fitness
                 self.best_model = deepcopy(model)
@@ -68,7 +67,7 @@ class GeneticAlgorithmEngine:
         
         return ancestors
 
-    def create_node(self, G, model_info, alias, alias_map, displayed_models_this_gen, gen_index, model_id, edge_color_map):
+    def create_node(self, G, model_info, alias, alias_map, displayed_models_this_gen, gen_index, edge_color_map):
         G.add_node(alias)
         displayed_models_this_gen.append(alias)
 
@@ -117,7 +116,7 @@ class GeneticAlgorithmEngine:
 
                 alias_map[(model_id, gen_index)] = alias
 
-                G, edge_color_map = self.create_node(G, model_info, alias, alias_map, displayed_models_this_gen, gen_index, model_id, edge_color_map)
+                G, edge_color_map = self.create_node(G, model_info, alias, alias_map, displayed_models_this_gen, gen_index, edge_color_map)
 
                 if model_id == best_model_id:
                     color_map.append('blue')
