@@ -50,3 +50,7 @@ class NeuralNetwork:
                 accuracy = self.metric.compute()
                 self.metric.reset()
         return test_loss / len(data_loader.dataset), accuracy
+    
+    def cross_validate(self, train_loader, test_loader, epochs):
+        self.train(train_loader, epochs)
+        self.fitness, self.accuracy = self.evaluate(test_loader)

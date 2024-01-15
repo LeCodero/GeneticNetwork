@@ -1,3 +1,5 @@
+# This script is only intended to show how the library works. Here, just creating a model that make additions.
+
 import numpy as np
 import torch
 import torch.nn as nn
